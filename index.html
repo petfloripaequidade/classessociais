@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aula.classes-sociais - Acessibilidade Integrada</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+        :root {
+            --primary-main: #006064; 
+            --primary-accent: #bf9b30; 
+            --dark-bg: #040b14; 
+            --text-main: #f1f5f9; 
+            --text-sub: #94a3b8; 
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark-bg);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(0, 96, 100, 0.3) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(191, 155, 48, 0.15) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(4, 30, 66, 0.3) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(191, 155, 48, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(0, 96, 100, 0.2) 0px, transparent 50%);
+            background-attachment: fixed;
+            scroll-behavior: smooth;
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        .vibrant-header {
+            background: rgba(4, 11, 20, 0.5);
+            backdrop-filter: blur(20px);
+            padding: 70px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .vibrant-header::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-accent), var(--primary-main), transparent);
+        }
+
+        .logo-box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            display: inline-block;
+            padding: 18px 35px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 35px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .header-main-title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            text-transform: uppercase;
+            letter-spacing: -3px;
+            line-height: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .header-subtitle {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-accent); 
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            margin-bottom: 50px;
+            opacity: 0.9;
+        }
+
+        .header-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.03);
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(5px);
+            text-decoration: none;
+        }
+
+        .nav-btn:hover, .nav-btn:focus {
+            background: linear-gradient(135deg, var(--primary-main), #00838f);
+            border-color: transparent;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 96, 100, 0.4);
+            outline: none;
+        }
+
+        .section-block {
+            max-width: 1000px;
+            margin: 0 auto 80px;
+            background: rgba(15, 23, 42, 0.3); 
+            backdrop-filter: blur(15px);
+            border-radius: 40px;
+            padding: 70px 50px;
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            scroll-mt: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .block-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #fff 20%, var(--primary-accent), var(--primary-main));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .video-thumbnail-container {
+            position: relative;
+            width: 100%;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            border: 1px solid rgba(0, 96, 100, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .video-thumbnail-container:hover {
+            transform: scale(1.01);
+        }
+
+        .video-thumbnail-container img {
+            width: 100%;
+            display: block;
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .video-thumbnail-container:hover .play-overlay {
+            background: rgba(0, 96, 100, 0.5); 
+        }
+
+        .play-button-icon {
+            font-size: 5rem;
+            color: #fff;
+            filter: drop-shadow(0 0 15px rgba(0,0,0,0.6));
+            transition: all 0.3s ease;
+        }
+
+        .video-thumbnail-container:hover .play-button-icon {
+            transform: scale(1.1);
+            color: var(--primary-accent); 
+        }
+
+        .mindmap-container, .infographic-box {
+            background: rgba(4, 11, 20, 0.6);
+            border-radius: 30px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            text-align: center;
+        }
+
+        .mindmap-container img, .infographic-box img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-vibrant {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: linear-gradient(135deg, var(--primary-main), #00838f);
+            color: #fff;
+            padding: 22px 50px;
+            border-radius: 20px;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 15px 30px rgba(0, 96, 100, 0.3);
+            border: none;
+            text-decoration: none;
+        }
+        
+        .btn-vibrant:hover {
+            box-shadow: 0 15px 35px rgba(0, 96, 100, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .icon-box {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 30px;
+            margin: 0 auto 30px;
+            font-size: 2.5rem;
+            color: #fff;
+            background: linear-gradient(135deg, var(--primary-main), var(--primary-accent));
+            box-shadow: 0 15px 35px rgba(0, 96, 100, 0.3);
+            position: relative;
+        }
+
+        .intro-text {
+            color: #cbd5e1;
+            font-size: 1.4rem;
+            line-height: 1.9;
+            font-weight: 400;
+        }
+
+        .references-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .references-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            background: var(--primary-accent); 
+            border-radius: 50%;
+        }
+
+        .references-list a {
+            color: var(--primary-accent); 
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .references-list a:hover {
+            text-decoration: underline;
+            color: #fff;
+        }
+
+        .transparency-note {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            font-style: italic;
+            text-align: center;
+        }
+
+        .credits-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .credit-item h4 {
+            color: #2dd4bf;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            margin: 15px 0 8px;
+            letter-spacing: 1px;
+        }
+
+        .credit-item p {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .credit-icon {
+            color: #2dd4bf;
+            font-size: 1.8rem;
+        }
+
+        .credit-divider {
+            width: 40px;
+            height: 3px;
+            background: #2dd4bf;
+            margin: 10px auto 25px;
+            border-radius: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .header-main-title { font-size: 2.5rem; }
+            .section-block { padding: 50px 25px; margin: 20px; }
+            .vibrant-header { padding: 50px 15px; }
+            .credits-container { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        }
+
+        @media (max-width: 480px) {
+            .credits-container { grid-template-columns: 1fr; }
+        }
+        
+        :focus-visible {
+            outline: 3px solid var(--primary-accent);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="vibrant-header" role="banner">
+        <div class="logo-box">
+            <img src="https://i.imgur.com/0ZdZvM4.jpg" alt="Logos institucionais da UFSC, UDESC e Prefeitura Municipal de Florianópolis" class="h-16 md:h-20 rounded-lg">
+        </div>
+        
+        <h1 class="header-main-title">Perspectivas de Cuidado e Equidade</h1>
+        <p class="header-subtitle">Aula: Classes sociais e formação na área da saúde</p>
+
+        <nav class="header-nav" aria-label="Navegação principal">
+            <a href="#introducao" class="nav-btn"><i class="fas fa-info-circle" aria-hidden="true"></i> Início</a>
+            <a href="#video" class="nav-btn"><i class="fas fa-play" aria-hidden="true"></i> Vídeo</a>
+            <a href="#mapa" class="nav-btn"><i class="fas fa-project-diagram" aria-hidden="true"></i> Mapa</a>
+            <a href="#infografico" class="nav-btn"><i class="fas fa-chart-bar" aria-hidden="true"></i> Dados</a>
+            <a href="#podcast" class="nav-btn"><i class="fas fa-microphone" aria-hidden="true"></i> Podcast</a>
+            <a href="#teste" class="nav-btn"><i class="fas fa-check-square" aria-hidden="true"></i> Teste</a>
+            <a href="#referencias" class="nav-btn"><i class="fas fa-book" aria-hidden="true"></i> Referências</a>
+        </nav>
+    </header>
+
+    <main role="main">
+        <section id="introducao" class="section-block" aria-labelledby="title-intro">
+            <div class="icon-box" aria-hidden="true"><i class="fas fa-hand-sparkles"></i></div>
+            <h2 id="title-intro" class="block-title">Introdução</h2>
+            
+            <div class="mb-12 rounded-[40px] overflow-hidden border border-white/10 shadow-2xl">
+                <img src="https://drive.google.com/file/d/1e6SPonNhCsu8yh7k1TwTjECvOuwNkQZn/view?usp=sharing" 
+                     alt="Imagem de capa representando o estudo de classes sociais e sua relação com o sistema de saúde" 
+                     class="w-full h-auto">
+            </div>
+
+            <div class="text-center intro-text">
+                <p>Sejam bem-vindos a esta aula dedicada à análise das <strong>classes sociais</strong> e seus impactos determinantes na formação e prática em saúde. Com base em evidências sociológicas e dados recentes, discutiremos como a desigualdade de classe e a crise estrutural moldam o acesso aos serviços e a qualidade do cuidado. Nosso objetivo é instrumentalizar profissionais e estudantes para uma atuação crítica, capaz de identificar determinantes sociais e promover uma equidade real no cotidiano do sistema de saúde brasileiro.</p>
+            </div>
+        </section>
+
+        <section id="video" class="section-block" aria-labelledby="title-video">
+            <div class="icon-box" aria-hidden="true"><i class="fas fa-video"></i></div>
+            <h2 id="title-video" class="block-title">Videoaula</h2>
+            
+            <a href="https://www.youtube.com/watch?v=TBUW1-Pr7GY" target="_blank" class="video-thumbnail-container block" aria-label="Assistir nova videoaula no YouTube">
+                <img src="https://img.youtube.com/vi/TBUW1-Pr7GY/maxresdefault.jpg" alt="Miniatura do novo vídeo de apoio à aula sobre classes sociais">
+                <div class="play-overlay">
+                    <i class="fas fa-play-circle play-button-icon" aria-hidden="true"></i>
+                </div>
+            </a>
+            <p class="text-center mt-6 text-slate-400">Clique na imagem acima para reproduzir o vídeo no YouTube.</p>
+        </section>
+
+        <section id="mapa" class="section-block" aria-labelledby="title-mapa">
+            <div class="icon-box" aria-hidden="true"><i class="fas fa-project-diagram"></i></div>
+            <h2 id="title-mapa" class="block-title">Mapa Mental</h2>
+            <div class="mindmap-container">
+                <img src="https://drive.google.com/file/d/1e6SPonNhCsu8yh7k1TwTjECvOuwNkQZn/view?usp=sharing" 
+                     alt="Mapa mental detalhando as divisões de classes sociais e seus impactos na formação e no acesso à saúde">
+            </div>
+            <p class="text-center mt-8 text-slate-400 italic font-medium">
+                Diagrama explicativo sobre a estrutura das classes sociais e como a posição socioeconômica determina as trajetórias de cuidado no sistema de saúde.
+            </p>
+        </section>
+
+        <section id="infografico" class="section-block" aria-labelledby="title-info">
+            <div class="icon-box" aria-hidden="true"><i class="fas fa-chart-bar"></i></div>
+            <h2 id="title-info" class="block-title">Infográfico de Dados</h2>
+            <div class="infographic-box">
+                <img src="https://drive.google.com/file/d/1lFpIHrfhPY7-K94e8GS_SwvV5rsQIpHj/view?usp=sharing" 
+                     alt="Infográfico atualizado com dados estatísticos sobre desigualdade e saúde">
+            </div>
+            <p class="text-center mt-8 text-slate-400 italic font-medium">
+                Análise estatística e territorial da desigualdade social no Brasil, evidenciando os recortes de renda e acesso a direitos fundamentais.
+            </p>
+        </section>
+
+        <section id="podcast" class="section-block text-center" aria-labelledby="title-podcast">
+            <div class="icon-box" aria-hidden="true"><i class="fas fa-microphone-alt"></i></div>
+            <h2 id="title-podcast" class="block-title">Podcast</h2>
+            <p class="intro-text mb-12">Coloque seus fones e ouça agora o debate sobre o tema.</p>
+            <a href="https://drive.google.com/file/d/1kpVwnJiiY3jd6nebS00iQOvDns1pJRo_/view?usp=sharing" 
+               target="_blank" 
+               class="btn-vibrant" 
+               aria-label="Abrir o novo Podcast no Media Player do Google Drive">
+                <i class="fas fa-headphones" aria-hidden="true"></i> Abrir Media Player
+            </a>
+        </section>
+
+        <section id="teste" class="section-block text-center mb-12" aria-labelledby="title-teste">
+            <div class="icon-box" aria-hidden="true"><i class="fas fa-check-double"></i></div>
+            <h2 id="title-teste" class="block-title">Avaliação Final</h2>
+            <p class="intro-text mb-12">Valide seus conhecimentos para emitir sua certificação.</p>
+            <a href="https://forms.gle/mnzCjTfS3miWMPjF9" 
+               target="_blank" 
+               rel="noopener"
+               class="btn-vibrant" 
+               aria-label="Iniciar novo formulário de avaliação final">
+                <i class="fas fa-paper-plane" aria-hidden="true"></i> Iniciar Avaliação
+            </a>
+        </section>
+
+        <section id="referencias" class="section-block" aria-labelledby="title-ref">
+            <div class="icon-box" aria-hidden="true"><i class="fas fa-book"></i></div>
+            <h2 id="title-ref" class="block-title">Referências</h2>
+            <ul class="references-list">
+                <li>SANTOS, José Alcides Figueiredo. Classe Social e Desigualdade de Gênero no Brasil. <strong>Revista de Ciências Sociais</strong>, Rio de Janeiro, Vol. 51, no 2, 2008, pp. 353 a 402.</li>
+                <li>PANIAGO, Maria Cristina Soares. A crise estrutural e a centralidade das classes sociais. <strong>R. Katál.</strong>, Florianópolis, v. 17, n. 1, p. 41-49, jan./jun. 2014.</li>
+                <li>IBGE, Agência de Notícias. 8,6 milhões de pessoas saíram da pobreza entre 2023 e 2024. Disponível em: <a href="https://agenciadenoticias.ibge.gov.br/agencia-noticias/2012-agencia-de-noticias/noticias/45344-8-6-milhoes-de-pessoas-sairam-da-pobreza-entre-2023-e-2024" target="_blank" rel="noopener">Acesse a notícia do IBGE</a>. Acesso em 06/04/2026.</li>
+                <li>FGV Social. Mapa da Riqueza no Brasil. 2023. Disponível em: <a href="https://cps.fgv.br/riqueza" target="_blank" rel="noopener">Acesse o Mapa da Riqueza FGV</a>. Acesso em 07/04/2026.</li>
+                <li>SOUZA, Edvânia Ângela de. Violência, Saúde e Classes Sociais. <strong>R. Katál.</strong> Florianópolis, v.24, n. 2, p. 263-265, maio/ago. 2021.</li>
+                <li>BUSS, Paulo Marchiori. FILHO, Alberto Pellegrini. A Saúde e seus Determinantes Sociais. <strong>PHYSIS: Rev. Saúde Coletiva</strong>, Rio de Janeiro, 17(1):77-93, 2007.</li>
+            </ul>
+            <div class="transparency-note">
+                Nota de Transparência: Este material contou com o suporte da IA Gemini para estruturação de design, acessibilidade e revisão técnica.
+            </div>
+        </section>
+
+        <section id="creditos" class="section-block" aria-labelledby="title-credits">
+            <h2 id="title-credits" class="text-3xl font-black text-center text-teal-400 uppercase tracking-widest mb-2">Créditos</h2>
+            <div class="credit-divider" aria-hidden="true"></div>
+            
+            <div class="credits-container">
+                <article class="credit-item">
+                    <i class="fas fa-user-edit credit-icon" aria-hidden="true"></i>
+                    <h4>Organização</h4>
+                    <p>Eduarda Padilha da Costa</p>
+                </article>
+                
+                <article class="credit-item">
+                    <i class="fas fa-university credit-icon" aria-hidden="true"></i>
+                    <h4>Curso</h4>
+                    <p>Ciências Econômicas / UDESC</p>
+                </article>
+                
+                <article class="credit-item">
+                    <i class="fas fa-star credit-icon" aria-hidden="true"></i>
+                    <h4>Realização</h4>
+                    <p>Grupo PET 1</p>
+                </article>
+                
+                <article class="credit-item">
+                    <i class="fas fa-handshake credit-icon" aria-hidden="true"></i>
+                    <h4>Parceria</h4>
+                    <p>UFSC, UDESC e Prefeitura Municipal de Florianópolis/SC</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center pb-24 opacity-30" role="contentinfo">
+        <p class="font-bold text-white uppercase tracking-[0.5em] text-[10px]">SMS Florianópolis • ESP Floripa • PET Equidade</p>
+    </footer>
+
+</body>
+</html>
