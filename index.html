@@ -10,10 +10,10 @@
         @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 
         :root {
-            --primary: #3F7D58; /* Verde solicitado */
-            --light: #EFEFEF;   /* Cinza Claro solicitado */
-            --accent-1: #EF9651; /* Laranja Suave solicitado */
-            --accent-2: #EC5228; /* Laranja Vibrante solicitado */
+            --primary: #3F7D58; 
+            --light: #EFEFEF;   
+            --accent-1: #EF9651; 
+            --accent-2: #EC5228; 
             --bg-dark: #121212;
         }
 
@@ -43,6 +43,14 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        /* Ajuste técnico para manter a proporção original do logo */
+        .logo-box img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
         .section-block {
             max-width: 1000px;
             margin: 0 auto 60px;
@@ -60,7 +68,6 @@
             margin-bottom: 35px;
             color: var(--accent-1);
             text-transform: uppercase;
-            letter-spacing: 2px;
         }
 
         .content-comment {
@@ -107,10 +114,7 @@
             display: inline-block;
             text-decoration: none;
             color: white;
-            transition: transform 0.2s;
         }
-
-        .btn-vibrant:hover { transform: scale(1.03); }
 
         .credit-card {
             background: rgba(63, 125, 88, 0.03);
@@ -128,7 +132,7 @@
 
     <header class="vibrant-header">
         <div class="logo-box">
-            <img src="https://i.imgur.com/0ZdZvM4.jpg" alt="Logos UFSC, UDESC e Prefeitura" class="h-16 md:h-20 rounded-lg">
+            <img src="https://i.imgur.com/0ZdZvM4.jpg" alt="Logos Institucionais">
         </div>
         <h1 class="text-4xl md:text-5xl font-bold mb-4">Cuidado e Equidade</h1>
         <p class="text-lg md:text-xl font-medium tracking-widest uppercase mb-10" style="color: var(--accent-1);">Classes sociais e formação na saúde</p>
@@ -151,7 +155,7 @@
                 <img src="https://drive.google.com/thumbnail?id=1ZLsIKIVjhzx3bFt_t9ZaNdFJrsn1Cg7n&sz=w1200" alt="Capa" class="w-full">
             </div>
             <div class="text-lg leading-relaxed text-slate-200">
-                <p>Neste módulo fundamental, iniciamos uma jornada analítica sobre como as <strong>classes sociais</strong> e o racismo estrutural moldam a arquitetura da saúde pública brasileira. Através de uma perspectiva crítica, exploraremos os fundamentos teóricos e bioéticos que sustentam a Atenção Primária, entendendo que a equidade não é apenas um conceito abstrato, mas uma ferramenta política essencial para garantir a justiça social. Vamos investigar como as tensões entre a teoria do SUS e a prática nos territórios influenciam diretamente a qualidade do cuidado oferecido à população. Nosso objetivo é instrumentalizar sua prática profissional para identificar e intervir nos determinantes sociais que perpetuam as desigualdades históricas no acesso à saúde.</p>
+                <p>Neste módulo fundamental, iniciamos uma jornada analítica sobre como as <strong>classes sociais</strong> e o racismo estrutural moldam a arquitetura da saúde pública brasileira. Através de uma perspectiva crítica, exploraremos os fundamentos teóricos e bioéticos que sustentam a Atenção Primária, entendendo que a equidade não é apenas um concept abstrato, mas uma ferramenta política essencial para garantir a justiça social. Vamos investigar como as tensões entre a teoria do SUS e a prática nos territórios influenciam diretamente a qualidade do cuidado oferecido à população. Nosso objetivo é instrumentalizar sua prática profissional para identificar e intervir nos determinantes sociais que perpetuam as desigualdades históricas no acesso à saúde.</p>
                 
                 <div class="tip-box">
                     <p><span style="color: var(--accent-1); font-weight: 700;"><i class="fas fa-lightbulb"></i> Dica:</span> Recomendamos o uso de fones de ouvido para aproveitar melhor os recursos multimídia desta aula.</p>
@@ -209,12 +213,12 @@
         <section id="creditos" class="section-block">
             <h2 class="block-title">Créditos</h2>
             <div class="credits-container grid grid-cols-2 gap-8">
-                <div class="credit-card">
+                <div class="credit-card text-center">
                     <h4 style="color: var(--accent-1);" class="font-bold uppercase text-xs tracking-widest mb-3">Organização</h4>
                     <p class="text-lg font-bold">Eduarda XXXXX</p>
                     <p class="text-sm opacity-80 italic">Serviço Social / UFSC</p>
                 </div>
-                <div class="credit-card">
+                <div class="credit-card text-center">
                     <h4 style="color: var(--accent-1);" class="font-bold uppercase text-xs tracking-widest mb-3">Apoio</h4>
                     <p class="text-lg font-bold">Guilherme Luiz de Freitas</p>
                     <p class="text-sm opacity-80 italic">Administração / UFSC</p>
